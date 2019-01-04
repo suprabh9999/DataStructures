@@ -166,7 +166,33 @@ class SinglyLinkedList{
              this.length++;
              return this.length;
         }
-} 
+    }
+    
+    remove(index){
+        if(index > this.length || index < 0){
+            return `You cannot remove a node from index : ${index}`;
+        }
+
+        else if(index+1 === this.length){
+            return this.pop();
+        }
+        else if(index  === 0){
+             this.shift(value);   
+        }
+        else{
+             var current = this.head;
+             var prevNode = null;
+             var currentIndex=0;
+             while(currentIndex!==index){
+                prevNode = current;
+                current = current.next;
+                currentIndex++;
+             }
+             prevNode.next = current.next;
+             this.length--;
+             return this.length;
+        }
+    }
 
 }
 
