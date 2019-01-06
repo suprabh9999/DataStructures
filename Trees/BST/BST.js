@@ -64,6 +64,47 @@ class BST{
            return found ? currentNode : false;
         }
     }
+
+    contains(value){
+        if(!this.root){
+            return `Couldn't find value : ${value} as tree is empty.`;
+        }
+        else{
+            var currentNode =  this.root;
+            var found = false;
+            while(currentNode && !found){
+               if(value < currentNode.value){
+                       currentNode = currentNode.left;
+               }
+               else if(value > currentNode.value){
+                       currentNode =  currentNode.right;
+               }
+               else{
+                       return true;
+               }
+            }
+           
+           return false;
+        }
+    }
+
+    BFS(){
+        var node = this.root;
+        var data = [];
+        var queue = [];
+        queue.push(node);
+
+        while(queue.length){
+            node = queue.shift();
+            data.push(node.value);
+            if(node.left) queue.push(node.left);
+            if(node.right) queue.push(node.right);
+        }
+
+        return data;
+
+
+    }
 }
 
 //          10
